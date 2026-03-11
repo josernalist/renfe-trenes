@@ -1,0 +1,45 @@
+name: Archivar mes anterior
+
+on:
+  schedule:
+    - cron: "5 0 1 * *"   # día 1 de cada mes a las 00:05 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Comprimir datos del mes anterior
+        run: |
+          YEAR=$(date -u -d "last month" +%Y)
+          MONTH=$(date -u -d "last month" +%m)
+          DIR="data/${YEAR}/${MONTH}"
+          if [ -d "$DIR" ]; then
+            mkdir -p archives
+            TAR="archives/flota-${YEAR}-${MONTH}.tar.gz"
+            tar -czf "$TAR" "$DIR"
+            echo "Creado: $TAR"
+            git rm -r "$DIR"
+          else
+            echo "No hay datos para ${YEAR}-${MONTH}; nada que archivar."
+          fi
+
+      - name: Commit & push
+        run: |
+          if ! git diff --cached --quiet; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: archivar flota $(date -u +'%Y-%m')"
+            git push
+          else
+            echo "Nada que archivar."
+          fi
