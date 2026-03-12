@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}        # permite lanzarlo manualmente desde GitHub
 
 permissions:
-  contents: write              # necesario para hacer commit con GITHUB_TOKEN
+  contents: write
 
 jobs:
   fetch:

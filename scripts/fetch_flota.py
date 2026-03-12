@@ -1,26 +1,38 @@
 #!/usr/bin/env python3
 """
-Renfe Flota LD Archiver
+Renfe Flota LD Archiver — CSV edition
 Descarga https://tiempo-real.largorecorrido.renfe.com/renfe-visor/flotaLD.json
-y lo guarda con timestamp UTC en data/YYYY/MM/.
-Solo guarda si el contenido ha cambiado respecto al archivo anterior.
+y añade los datos al CSV diario en data/YYYY/MM/flota-YYYY-MM-DD.csv
+Solo escribe filas nuevas si el contenido ha cambiado respecto a la captura anterior.
 """
 
 import os
+import csv
 import json
 import hashlib
 import urllib.request
 import datetime
-import glob
 import sys
 import time
 
 BASE_URL = "https://tiempo-real.largorecorrido.renfe.com/renfe-visor/flotaLD.json"
 
+COLUMNAS = [
+    "timestamp_utc",
+    "tren",
+    "linea",
+    "retraso_min",
+    "origen",
+    "destino",
+    "latitud",
+    "longitud",
+    "accesible",
+    "mat",
+]
 
-def get_url():
-    """Genera la URL con timestamp Unix para evitar caché del servidor."""
-    ts = int(time.time() * 1000)  # milisegundos, como hace la web original
+
+def get_url() -> str:
+    ts = int(time.time() * 1000)
     return f"{BASE_URL}?v={ts}"
 
 
@@ -29,11 +41,10 @@ def sha256(b: bytes) -> str:
 
 
 def fetch() -> bytes:
-    url = get_url()
     req = urllib.request.Request(
-        url,
+        get_url(),
         headers={
-            "User-Agent": "renfe-flota-archiver/1.0",
+            "User-Agent": "renfe-flota-archiver/2.0",
             "Referer": "https://tiempo-real.largorecorrido.renfe.com/",
             "Accept": "application/json, */*",
         },
@@ -53,54 +64,72 @@ def fetch() -> bytes:
             time.sleep(5)
 
 
-def last_saved_bytes(out_dir: str):
-    """Devuelve el contenido del último archivo guardado en out_dir, o None."""
-    files = sorted(glob.glob(os.path.join(out_dir, "flota-*.json")))
-    if not files:
-        return None
-    with open(files[-1], "rb") as f:
-        return f.read()
+def last_hash_path(out_dir: str) -> str:
+    return os.path.join(out_dir, ".last_hash")
+
+
+def load_last_hash(out_dir: str):
+    p = last_hash_path(out_dir)
+    if os.path.exists(p):
+        with open(p) as f:
+            return f.read().strip()
+    return None
+
+
+def save_hash(out_dir: str, h: str):
+    with open(last_hash_path(out_dir), "w") as f:
+        f.write(h)
+
+
+def append_csv(out_path: str, timestamp_utc: str, trenes: list):
+    file_exists = os.path.exists(out_path)
+    with open(out_path, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=COLUMNAS)
+        if not file_exists:
+            writer.writeheader()
+        for t in trenes:
+            writer.writerow({
+                "timestamp_utc": timestamp_utc,
+                "tren":          t.get("codComercial", ""),
+                "linea":         t.get("desCorridor", ""),
+                "retraso_min":   t.get("ultRetraso", ""),
+                "origen":        t.get("codOrigen", ""),
+                "destino":       t.get("codDestino", ""),
+                "latitud":       t.get("latitud", ""),
+                "longitud":      t.get("longitud", ""),
+                "accesible":     t.get("accesible", ""),
+                "mat":           t.get("mat", ""),
+            })
 
 
 def main():
-    now_utc = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0, tzinfo=None)
+    now_utc = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
     out_dir = os.path.join("data", now_utc.strftime("%Y"), now_utc.strftime("%m"))
     os.makedirs(out_dir, exist_ok=True)
 
     data = fetch()
+    h = sha256(data)
 
-    # Validación JSON
-    try:
-        parsed = json.loads(data)
-        num_trenes = len(parsed.get("trenes", []))
-        fecha_renfe = parsed.get("fechaActualizacion", "desconocida")
-    except Exception:
-        print("WARNING: El contenido no es JSON válido (se guarda igualmente).", file=sys.stderr)
-        num_trenes = "?"
-        fecha_renfe = "desconocida"
-
-    # Solo guardar si hay cambios
-    prev = last_saved_bytes(out_dir)
-    if prev is not None and sha256(data) == sha256(prev):
-        print(f"Sin cambios respecto al archivo anterior. No se crea archivo nuevo.")
+    # Si el contenido no ha cambiado, no escribimos nada
+    if load_last_hash(out_dir) == h:
+        print("Sin cambios respecto a la captura anterior. No se escriben filas.")
         sys.exit(0)
 
-    # Guardar con timestamp en el nombre
-    ts_str = now_utc.isoformat().replace(":", "-") + "Z"
-    filename = f"flota-{ts_str}.json"
-    out_path = os.path.join(out_dir, filename)
+    parsed = json.loads(data)
+    trenes = parsed.get("trenes", [])
+    timestamp_utc = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    with open(out_path, "wb") as f:
-        f.write(data)
+    # CSV diario: un archivo por día
+    csv_filename = f"flota-{now_utc.strftime('%Y-%m-%d')}.csv"
+    csv_path = os.path.join(out_dir, csv_filename)
 
-    # Puntero estable al último archivo
-    latest_path = os.path.join("data", "latest.json")
-    with open(latest_path, "wb") as f:
-        f.write(data)
+    append_csv(csv_path, timestamp_utc, trenes)
+    save_hash(out_dir, h)
 
-    print(f"Guardado: {out_path}")
-    print(f"  Trenes activos : {num_trenes}")
-    print(f"  Actualizado    : {fecha_renfe}")
+    print(f"Añadido a  : {csv_path}")
+    print(f"Timestamp  : {timestamp_utc}")
+    print(f"Trenes     : {len(trenes)}")
+    print(f"Actualizado: {parsed.get('fechaActualizacion', '?')}")
 
 
 if __name__ == "__main__":
