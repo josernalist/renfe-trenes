@@ -9,3 +9,7 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-13T00:30:22Z,12477,Vigo - Ourense - Ponferrada,161,22100,08223,42.234493,-8.713075,False,121011
 2026-03-13T00:45:16Z,12477,Vigo - Ourense - Ponferrada,161,22100,08223,42.234493,-8.713075,False,121011
 2026-03-13T04:15:15Z,04056,Madrid Ch - Valladolid - Vitoria - Irun,3,11511,17000,43.210808,-2.0263278,False,121006
+2026-03-13T04:30:23Z,04154,Madrid - Ourense - A Coruña,-2,31412,17000,43.03807,-8.448094,False,106051
+2026-03-13T04:30:23Z,04056,Madrid Ch - Valladolid - Vitoria - Irun,2,11511,17000,43.111626,-2.092454,False,121006
+2026-03-13T04:30:23Z,14541,Murcia - Cartagena (Proximidad),-1,61307,61200,37.747013,-0.9672061,False,592219
+2026-03-13T04:30:23Z,12512,A Coruña - Vigo,4,08223,31412,42.383606,-8.633176,False,599034
