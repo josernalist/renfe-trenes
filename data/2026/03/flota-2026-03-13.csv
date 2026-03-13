@@ -1,0 +1,4 @@
+timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
+2026-03-13T00:00:34Z,00626,Barcelona - Pamplona - León - Vigo - A Coruña,159,71801,31412,43.34122,-8.421483,True,130043
+2026-03-13T00:00:34Z,12477,Vigo - Ourense - Ponferrada,157,22100,08223,42.465794,-8.646645,False,121011
+2026-03-13T00:00:34Z,02217,Madrid P.Atocha - Sevilla S.J.,85,51003,60000,40.39899,-3.6768184,False,112020
