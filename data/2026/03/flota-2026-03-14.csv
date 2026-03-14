@@ -2,3 +2,4 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-14T00:00:30Z,17113,Madrid - Ávila,4,10203,10400,40.65721,-4.68309,False,465058
 2026-03-14T00:00:30Z,18096,Barcelona S - Valencia N,72,65400,79400,41.379074,2.139723,False,"470128,470190"
 2026-03-14T00:00:30Z,05214,Madrid - Valencia J.Sorolla,11,17000,03216,39.457085,-0.3817356,False,106011
+2026-03-14T00:15:15Z,18096,Barcelona S - Valencia N,73,65400,79400,41.39857,2.1874444,False,"470128,470190"
