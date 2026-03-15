@@ -1,3 +1,4 @@
 timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
 2026-03-15T00:00:30Z,13946,Sevilla - Almería,25,05000,56310,36.88347,-2.4363406,False,599010
 2026-03-15T00:15:18Z,13946,Sevilla - Almería,25,05000,56310,36.88347,-2.4363406,False,599010
+2026-03-15T04:45:15Z,03062,Madrid PA - Zaragoza - Barcelona - Figueres,0,04307,60000,41.98014,2.816212,False,103012
