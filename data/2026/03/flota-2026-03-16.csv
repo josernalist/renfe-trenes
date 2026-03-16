@@ -7,3 +7,4 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-16T00:30:21Z,02210,Madrid PA - Sevilla,13,60000,51003,37.392242,-5.974641,True,100010
 2026-03-16T00:45:14Z,02210,Madrid PA - Sevilla,13,60000,51003,37.392242,-5.974641,True,100010
 2026-03-16T01:00:27Z,02210,Madrid PA - Sevilla,13,60000,51003,37.392242,-5.974641,True,100010
+2026-03-16T03:30:23Z,18047,Albacete - Madrid,0,60600,18000,39.19573,-2.15769,False,449011
