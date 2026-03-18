@@ -2,3 +2,5 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-18T00:00:31Z,12646,A Coruña - Lugo - Monforte,0,22100,31412,43.31794,-8.368608,False,594104
 2026-03-18T00:15:17Z,12646,A Coruña - Lugo - Monforte,0,22100,31412,43.31794,-8.368608,False,594104
 2026-03-18T00:30:21Z,12646,A Coruña - Lugo - Monforte,0,22100,31412,43.31794,-8.368608,False,594104
+2026-03-18T04:15:16Z,04056,Madrid Ch - Valladolid - Vitoria - Irun,4,11511,17000,43.201393,-2.0375614,False,121018
+2026-03-18T04:15:16Z,12512,A Coruña - Vigo,0,08223,31412,42.281292,-8.603139,False,599025
