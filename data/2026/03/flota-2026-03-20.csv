@@ -23,3 +23,8 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-20T04:27:25Z,14541,Murcia - Cartagena (Proximidad),0,61307,61200,37.747013,-0.9672061,False,592017
 2026-03-20T04:27:25Z,15620,Lleida Pirineus - Terrassa Estació del Nord,0,78400,78600,41.63121,0.80705994,False,447173
 2026-03-20T04:27:25Z,12512,A Coruña - Vigo,1,08223,31412,42.373837,-8.632896,False,599018
+2026-03-20T04:30:23Z,04154,Madrid - Ourense - A Coruña,-1,31412,17000,43.147682,-8.459796,False,106053
+2026-03-20T04:30:23Z,04056,Madrid Ch - Valladolid - Vitoria - Irun,-1,11511,17000,43.09651,-2.1162748,False,121022
+2026-03-20T04:30:23Z,14541,Murcia - Cartagena (Proximidad),0,61307,61200,37.747013,-0.9672061,False,592017
+2026-03-20T04:30:23Z,15620,Lleida Pirineus - Terrassa Estació del Nord,0,78400,78600,41.631134,0.85500044,False,447173
+2026-03-20T04:30:23Z,12512,A Coruña - Vigo,2,08223,31412,42.415997,-8.636481,False,599018
