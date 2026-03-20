@@ -7,3 +7,5 @@ timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,m
 2026-03-20T00:30:22Z,12477,Vigo - Ourense - Ponferrada,240,22100,08223,42.45904,-8.070512,False,121011
 2026-03-20T00:45:16Z,00626,Barcelona - Pamplona - León - Vigo - A Coruña,252,71801,31412,42.759087,-8.331105,False,130028
 2026-03-20T00:45:16Z,12477,Vigo - Ourense - Ponferrada,237,22100,08223,42.779125,-8.380363,False,121011
+2026-03-20T01:00:29Z,00626,Barcelona - Pamplona - León - Vigo - A Coruña,252,71801,31412,42.8711,-8.543178,False,130028
+2026-03-20T01:00:29Z,12477,Vigo - Ourense - Ponferrada,237,22100,08223,42.830883,-8.612535,False,121011
