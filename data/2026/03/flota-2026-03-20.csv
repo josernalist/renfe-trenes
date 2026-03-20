@@ -1,3 +1,5 @@
 timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
 2026-03-20T00:00:32Z,00626,Barcelona - Pamplona - León - Vigo - A Coruña,254,71801,31412,42.411076,-7.7858367,False,130028
 2026-03-20T00:00:32Z,05214,Madrid - Valencia J.Sorolla,19,17000,03216,39.45706,-0.3817344,False,106008
+2026-03-20T00:15:18Z,00626,Barcelona - Pamplona - León - Vigo - A Coruña,252,71801,31412,42.351456,-7.8750963,False,130028
+2026-03-20T00:15:18Z,05214,Madrid - Valencia J.Sorolla,19,17000,03216,39.457058,-0.3817341,False,106008
