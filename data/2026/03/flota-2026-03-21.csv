@@ -1,0 +1,3 @@
+timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
+2026-03-21T00:00:30Z,12692,A Coruña - Ferrol,45,31412,21010,43.488102,-8.230719,False,594106
+2026-03-21T00:00:30Z,05214,Madrid - Valencia J.Sorolla,13,17000,03216,39.45207,-0.38217136,False,106014
