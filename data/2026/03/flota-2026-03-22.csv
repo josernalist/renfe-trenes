@@ -1,0 +1,3 @@
+timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
+2026-03-22T00:00:32Z,17113,Madrid - Ávila,7,10203,10400,40.65721,-4.68309,False,465040
+2026-03-22T00:00:32Z,00279,Madrid Ch - Almeria,135,56310,17000,40.406128,-3.689053,False,"334011,6B13"
