@@ -1,0 +1,6 @@
+timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
+2026-03-23T00:00:32Z,01181,Figueres - Barcelona - Valencia JS - Alicante,68,71801,60911,38.382587,-0.52895117,True,130030
+2026-03-23T00:00:32Z,13946,Sevilla - Almería,28,05000,56310,36.951168,-2.4865346,False,599020
+2026-03-23T00:00:32Z,00622,Barcelona - Pamplona - León - Vigo - A Coruña,143,71801,08223,42.26386,-8.612376,True,730022
+2026-03-23T00:00:32Z,13911,Sevilla - Málaga,103,54413,51003,37.30322,-5.9655614,False,598014
+2026-03-23T00:00:32Z,05214,Madrid - Valencia J.Sorolla,12,17000,03216,39.45704,-0.3817329,False,106010
