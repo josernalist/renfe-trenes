@@ -1,0 +1,3 @@
+timestamp_utc,tren,linea,retraso_min,origen,destino,latitud,longitud,accesible,mat
+2026-05-23T00:00:38Z,00608,,294,80100,60000,40.82014,-2.89664,True,120065
+2026-05-23T00:00:38Z,00610,,170,80100,60000,40.397823,-3.6755319,False,120062
